@@ -1,6 +1,6 @@
 <h2>Listing Published Books</h2>
 
-<table>
+<table class="striped">
   <tr>
     <th>Title</th>
     <th>Category</th>
@@ -18,8 +18,13 @@
 		<td><%= book.published_date.year %></td>
 		<td><%= if book.authors.count > 0 then book.authors.alphabetical.first.name else "None" end %></td>
 		<td align="right"><%= number_with_delimiter(book.units_sold) %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Destroy', book, confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+      <%= link_to 'Edit', edit_book_path(book), class: "waves-effect waves-light btn light-blue" %>
+    </td>
+    <td>
+      <%= link_to 'Destroy', book, data: { confirm: 'Are you sure?' }, method: :delete, class: "waves-effect waves-light btn red" %>
+    </td>
+
   </tr>
 <% end %>
 </table>
@@ -30,9 +35,3 @@
 </span>
 
 <br />
-
-<ul class="options">Switch to:
-	<li><%= link_to 'Books Under Contract', contracted_books_path %></li>
-	<li><%= link_to 'Proposed Books', proposed_books_path %></li>
-	<li><%= link_to 'Add a New Book', new_book_path %></li>
-</ul>
