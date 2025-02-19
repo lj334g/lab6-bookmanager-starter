@@ -11,4 +11,11 @@ Rails.application.routes.draw do
   
   # Set the root url
   root to: 'books#index', as: :home
+
+  Rails.application.routes.draw do
+    resources :books
+    resources :authors
+    resources :categories
+  end
+  
 end
